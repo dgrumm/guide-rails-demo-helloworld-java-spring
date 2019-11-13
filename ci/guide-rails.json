@@ -50,7 +50,7 @@
 					{
 						"name": "list ",
 						"definition": "list ",
-						"command": "ls -R\n",
+						"command": "ls -Rtl\n",
 						"properties": null
 					}
 				],
