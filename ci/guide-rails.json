@@ -50,7 +50,7 @@
 					{
 						"name": "list ",
 						"definition": "list ",
-						"command": "ls -Rlt\n",
+						"command": "ls -R\n",
 						"properties": null
 					}
 				],
@@ -132,6 +132,7 @@
 			{
 				"name": "Integration",
 				"segment_type": "integration",
+				"persistent": true,
 				"run_after": [
 					"Build"
 				],
