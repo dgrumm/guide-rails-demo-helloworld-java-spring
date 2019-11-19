@@ -32,7 +32,7 @@
 					{
 						"name": "build",
 						"definition": "build",
-						"command": "# maven compile\nmvn compile",
+						"command": "mvn compile",
 						"properties": null
 					},
 					{
