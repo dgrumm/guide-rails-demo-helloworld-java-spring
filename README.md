@@ -1,4 +1,3 @@
-# About simple-hello-world:
+# About guide-rails-demo-helloworld-java-spring:
 
-
-Simple java app for testing JAVA_MAVEN language templates.
+A simple java application used to demonstrated Guide-Rails' CI/CD capabilities.
