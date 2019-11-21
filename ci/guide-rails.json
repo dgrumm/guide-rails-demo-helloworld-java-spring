@@ -3,7 +3,7 @@
 		"version": 1
 	},
 	"application": {
-		"name": "simple-hello-world-java",
+		"name": "guide-rails-demo-helloworld-java-spring",
 		"language": "JAVA_MAVEN",
 		"artifact_store": {
 			"type": "s3",
