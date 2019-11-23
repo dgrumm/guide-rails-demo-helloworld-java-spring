@@ -32,7 +32,7 @@
 					{
 						"name": "build",
 						"definition": "build",
-						"command": "mvn compile\n# comment\n",
+						"command": "mvn compile\n",
 						"properties": null
 					},
 					{
