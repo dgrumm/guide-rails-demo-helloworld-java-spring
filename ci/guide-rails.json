@@ -4,7 +4,7 @@
 	},
 	"application": {
 		"name": "guide-rails-demo-helloworld-java-spring",
-		"language": "JAVA_MAVEN",
+		"language": "JAVA",
 		"artifact_store": {
 			"type": "s3",
 			"repositories": [
