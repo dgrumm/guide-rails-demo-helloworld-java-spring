@@ -1,6 +1,6 @@
 {
 	"metadata": {
-		"version": 1
+		"version": 2
 	},
 	"application": {
 		"name": "guide-rails-demo-helloworld-java-spring",
@@ -28,32 +28,6 @@
 			{
 				"name": "Build",
 				"segment_type": "build",
-				"job_steps": [
-					{
-						"name": "build",
-						"definition": "build",
-						"command": "mvn compile\n",
-						"properties": null
-					},
-					{
-						"name": "test",
-						"definition": "test",
-						"command": "mvn surefire-report:report \ncat ./target/surefire-reports/TEST-com.javacodegeeks.example.HelloWorldApplicationTests.xml \ncp ./target/surefire-reports/TEST-com.javacodegeeks.example.HelloWorldApplicationTests.xml ./test.xml\nmvn cobertura:cobertura  -Dcobertura.report.format=xml  -Dcobertura.aggregate=true install -e",
-						"properties": null
-					},
-					{
-						"name": "create jar",
-						"definition": "create jar",
-						"command": "mvn package\n# comment",
-						"properties": null
-					},
-					{
-						"name": "list ",
-						"definition": "list ",
-						"command": "ls -Rlt\n",
-						"properties": null
-					}
-				],
 				"exit_actions": {
 					"default": {
 						"fetch_logs": true,
@@ -127,7 +101,38 @@
 						"UnhealthyThresholdCount": 0
 					}
 				},
-				"cache_info": {}
+				"cache_info": {},
+				"tasks": [
+					{
+						"name": "guide-rails-demo-helloworld-java-spring",
+						"steps": [
+							{
+								"name": "build",
+								"definition": "build",
+								"command": "mvn compile\n",
+								"properties": null
+							},
+							{
+								"name": "test",
+								"definition": "test",
+								"command": "mvn surefire-report:report \ncat ./target/surefire-reports/TEST-com.javacodegeeks.example.HelloWorldApplicationTests.xml \ncp ./target/surefire-reports/TEST-com.javacodegeeks.example.HelloWorldApplicationTests.xml ./test.xml\nmvn cobertura:cobertura  -Dcobertura.report.format=xml  -Dcobertura.aggregate=true install -e",
+								"properties": null
+							},
+							{
+								"name": "create jar",
+								"definition": "create jar",
+								"command": "mvn package\n# comment",
+								"properties": null
+							},
+							{
+								"name": "list ",
+								"definition": "list ",
+								"command": "ls -Rlt\n",
+								"properties": null
+							}
+						]
+					}
+				]
 			},
 			{
 				"name": "Integration",
@@ -202,15 +207,20 @@
 						"name": "((application.name))",
 						"number_of_instances": 1,
 						"persistent_disk_type": "",
+						"cloud_provider_name": "guide-rails",
 						"vm_type": "default",
 						"os_type": "default",
 						"networks": [
-							"((deploy.target.network.integration))"
+							"integration"
 						],
-						"availability_zones": [
-							"((deploy.target.zone.integration))"
-						],
-						"deployment_strategy": {},
+						"availability_zones": null,
+						"deployment_strategy": {
+							"canaries": 1,
+							"max_in_flight": 1,
+							"canary_watch_time": "120000-240000",
+							"update_watch_time": "120000-240000",
+							"serial": false
+						},
 						"dependencies": []
 					}
 				],
@@ -338,15 +348,20 @@
 						"name": "((application.name))",
 						"number_of_instances": 1,
 						"persistent_disk_type": "",
+						"cloud_provider_name": "guide-rails",
 						"vm_type": "default",
 						"os_type": "default",
 						"networks": [
-							"((deploy.target.network.release))"
+							"release"
 						],
-						"availability_zones": [
-							"((deploy.target.zone.release))"
-						],
-						"deployment_strategy": {},
+						"availability_zones": null,
+						"deployment_strategy": {
+							"canaries": 1,
+							"max_in_flight": 1,
+							"canary_watch_time": "5000-30000",
+							"update_watch_time": "5000-30000",
+							"serial": false
+						},
 						"dependencies": []
 					}
 				],
@@ -448,15 +463,20 @@
 						"name": "((application.name))",
 						"number_of_instances": 1,
 						"persistent_disk_type": "",
+						"cloud_provider_name": "guide-rails",
 						"vm_type": "default",
 						"os_type": "default",
 						"networks": [
-							"((deploy.target.network.production))"
+							"production"
 						],
-						"availability_zones": [
-							"((deploy.target.zone.production))"
-						],
-						"deployment_strategy": {},
+						"availability_zones": null,
+						"deployment_strategy": {
+							"canaries": 1,
+							"max_in_flight": 1,
+							"canary_watch_time": "120000-240000",
+							"update_watch_time": "120000-240000",
+							"serial": false
+						},
 						"dependencies": []
 					}
 				],
